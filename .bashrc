@@ -87,11 +87,19 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
+alias ls='ls --color'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+alias ..='cd ../../'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../../'
+alias ......='cd ../../../../../../'
+
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -112,17 +120,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=$HOME/local/bin:$PATH
-export PATH=$HOME/local/bin:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
-#vi mode
-set -o vi
+# Set 256 terminal
+
+if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
+    export TERM=xterm-256color
+fi
